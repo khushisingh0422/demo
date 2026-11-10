@@ -4,8 +4,7 @@ interface Lead {
   name: string
   phone: string
   email?: string
-  project?: string
-  visitDate?: string
+  interest?: string
   message?: string
   website?: string // honeypot
 }
@@ -23,8 +22,7 @@ export default defineEventHandler(async (event) => {
     name: clip(raw?.name, 80),
     phone: clip(raw?.phone, 20),
     email: clip(raw?.email, 120),
-    project: clip(raw?.project, 60),
-    visitDate: clip(raw?.visitDate, 20),
+    interest: clip(raw?.interest, 60),
     message: clip(raw?.message, 1000),
     submittedAt: new Date().toISOString(),
   }
@@ -53,11 +51,11 @@ export default defineEventHandler(async (event) => {
       .map(([k, v]) => `<tr><td style="padding:6px 12px;font-weight:600">${k}</td><td style="padding:6px 12px">${esc(v) || '—'}</td></tr>`)
       .join('')
     tasks.push(transporter.sendMail({
-      from: `"Dvayu Website" <${cfg.smtpUser}>`,
+      from: `"VD Vanchers Website" <${cfg.smtpUser}>`,
       to: cfg.leadEmailTo,
       replyTo: lead.email || undefined,
-      subject: `New consultation request — ${lead.name}`,
-      html: `<h2>New consultation request</h2><table border="1" cellspacing="0">${rows}</table>`,
+      subject: `New website enquiry — ${lead.name}`,
+      html: `<h2>New website enquiry</h2><table border="1" cellspacing="0">${rows}</table>`,
     }))
   }
 

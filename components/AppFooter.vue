@@ -1,76 +1,56 @@
 <script setup lang="ts">
 import { contact, navLinks, projects } from '~/data/site'
-
-const icons: Record<string, string> = {
-  facebook: 'M14 8h3V4h-3a4 4 0 0 0-4 4v2H8v4h2v8h4v-8h3l1-4h-4V8z',
-  instagram: 'M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4zm5 5a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm5.5-1.5h.01',
-  youtube: 'M22 8.5a3 3 0 0 0-2-2C18.3 6 12 6 12 6s-6.3 0-8 .5a3 3 0 0 0-2 2A31 31 0 0 0 2 12a31 31 0 0 0 0 3.5 3 3 0 0 0 2 2c1.7.5 8 .5 8 .5s6.3 0 8-.5a3 3 0 0 0 2-2 31 31 0 0 0 0-7zM10 15V9l5 3-5 3z',
-  linkedin: 'M4 9h4v12H4zM6 3a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm4 6h4v2c.6-1.1 2-2.2 4-2.2 4 0 4.5 2.6 4.5 6V21h-4v-5.5c0-1.4 0-3.2-2-3.2s-2.4 1.5-2.4 3.1V21H10z',
-}
 const year = new Date().getFullYear()
 </script>
 
 <template>
   <footer class="footer">
-    <div class="container cols">
-      <div class="brand">
-        <a href="#home" class="logo">
-          <img src="/images/Dvayu-logo-scaled.jpg" alt="Dvayu Farms" width="72" height="72" loading="lazy" />
-        </a>
-        <p>Modern farmhouse living surrounded by greenery — a peaceful countryside retreat just minutes from Noida and Delhi NCR.</p>
-        <div class="social">
-          <a v-for="s in contact.socials" :key="s.name" :href="s.href" target="_blank" rel="noopener" :aria-label="s.name">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path :d="icons[s.icon]" /></svg>
-          </a>
+    <div class="container">
+      <div class="grid">
+        <div class="brand-col">
+          <BrandLogo />
+          <p>Building relationships through thoughtful real estate development, transparent guidance and customer-first service.</p>
+          <div v-if="contact.socials.length" class="social">
+            <a v-for="s in contact.socials" :key="s.name" :href="s.href" target="_blank" rel="noopener">{{ s.name }}</a>
+          </div>
+        </div>
+        <div class="col">
+          <h4>Explore</h4>
+          <a v-for="l in navLinks.slice(1)" :key="l.href" :href="l.href">{{ l.label }}</a>
+        </div>
+        <div class="col">
+          <h4>Our Projects</h4>
+          <a v-for="p in projects" :key="p.name" href="#projects">{{ p.name }}</a>
+        </div>
+        <div class="col">
+          <h4>Get in touch</h4>
+          <p>{{ contact.address }}</p>
+          <a :href="`tel:${contact.phoneHref}`">{{ contact.phone }}</a>
+          <a :href="`mailto:${contact.email}`">{{ contact.email }}</a>
         </div>
       </div>
-
-      <div>
-        <h4>Quick Links</h4>
-        <ul><li v-for="l in navLinks" :key="l.href"><a :href="l.href">{{ l.label }}</a></li></ul>
-      </div>
-
-      <div>
-        <h4>Our Projects</h4>
-        <ul><li v-for="p in projects" :key="p.name"><a href="#projects">{{ p.name }}</a></li></ul>
-      </div>
-
-      <div>
-        <h4>Find Us</h4>
-        <ul class="contact">
-          <li>{{ contact.address }}</li>
-          <li><a :href="`tel:${contact.phone}`">{{ contact.phone }}</a></li>
-          <li><a :href="`mailto:${contact.email}`">{{ contact.email }}</a></li>
-        </ul>
-        <a href="#consultation" class="btn btn-primary book">Book Now</a>
-      </div>
-    </div>
-
-    <div class="bottom">
-      <div class="container">
-        <span>© {{ year }} Dvayu Farms. All rights reserved.</span>
-        <span>Sector 135, Noida · Uttar Pradesh</span>
+      <div class="bottom">
+        <span>© {{ year }} VD Vanchers. All rights reserved.</span>
+        <span>Noida · Greater Noida · Vrindavan · Dehradun</span>
       </div>
     </div>
   </footer>
 </template>
 
 <style scoped>
-.footer { background: var(--navy-900); color: rgba(255,255,255,.75); padding-top: 80px; font-size: 14.5px; }
-.cols { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.3fr; gap: 48px; padding-bottom: 56px; }
-.logo img { width: 84px; height: 84px; border-radius: 12px; margin-bottom: 20px; }
-.brand p { margin: 0 0 24px; max-width: 320px; }
-.social { display: flex; gap: 10px; }
-.social a { width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,255,255,.2); display: grid; place-items: center; color: var(--white); transition: .25s; }
-.social a:hover { background: var(--sky); border-color: var(--sky); color: var(--navy-900); }
-h4 { font-family: var(--serif); font-size: 22px; color: var(--white); margin-bottom: 20px; position: relative; padding-bottom: 12px; }
-h4::after { content: ''; position: absolute; left: 0; bottom: 0; width: 36px; height: 2px; background: var(--sky); }
-ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
-ul a { transition: color .2s, padding .2s; }
-ul a:hover { color: var(--sky); padding-left: 4px; }
-.book { margin-top: 22px; padding: 12px 24px; }
-.bottom { border-top: 1px solid rgba(255,255,255,.08); padding: 22px 0; font-size: 13px; color: rgba(255,255,255,.5); }
-.bottom .container { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-@media (max-width: 960px) { .cols { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 560px) { .cols { grid-template-columns: 1fr; gap: 36px; } }
+.footer { background: var(--navy-deep); color: var(--white); padding: 65px 0 22px; }
+.grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 40px; padding-bottom: 42px; }
+.brand-col p { max-width: 310px; color: rgba(255,255,255,.62); font-size: .85rem; margin-top: 24px; }
+.social { display: flex; gap: 14px; flex-wrap: wrap; font-size: .75rem; }
+.social a { color: var(--gold2); }
+h4 { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: var(--gold2); margin: 5px 0 19px; }
+.col a, .col p { display: block; color: rgba(255,255,255,.68); font-size: .82rem; margin: 0 0 11px; transition: color .2s; }
+.col a:hover { color: var(--gold2); }
+.bottom { border-top: 1px solid rgba(255,255,255,.14); padding-top: 20px; display: flex; justify-content: space-between; gap: 20px; color: rgba(255,255,255,.48); font-size: .68rem; }
+@media (max-width: 900px) { .grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 680px) {
+  .grid { gap: 28px; }
+  .brand-col { grid-column: 1 / -1; }
+  .bottom { flex-direction: column; }
+}
 </style>

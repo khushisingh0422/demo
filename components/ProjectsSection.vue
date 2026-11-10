@@ -5,30 +5,34 @@ useReveal(root)
 </script>
 
 <template>
-  <section id="projects" ref="root" class="section">
+  <section id="projects" ref="root" class="section projects">
     <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Our Projects</span>
-        <h2 class="section-title">Farms That Transform Your Living</h2>
-        <p>Handpicked locations, thoughtfully planned communities and farmhouses built to be lived in for generations.</p>
+      <div class="head reveal">
+        <div>
+          <div class="eyebrow">Our portfolio</div>
+          <h2>Find a place for your next chapter.</h2>
+          <p class="intro-text">From residential plots to farmhouse communities, explore developments shaped around location, lifestyle and long-term potential.</p>
+        </div>
+        <a class="btn" href="#consultation">Enquire About a Project ↗</a>
       </div>
 
-      <div class="cards">
-        <article v-for="(p, i) in projects" :key="p.name" class="card reveal" :style="{ transitionDelay: `${i * 0.12}s` }">
+      <div class="grid">
+        <article
+          v-for="(p, i) in projects"
+          :key="p.name"
+          class="card reveal"
+          :style="{ transitionDelay: `${(i % 3) * 0.1}s` }"
+        >
           <div class="img">
             <img :src="p.image" :alt="p.name" loading="lazy" />
-            <span class="status">{{ p.status }}</span>
+            <span class="tag">{{ p.tag }}</span>
           </div>
           <div class="body">
-            <p class="loc">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z" /><circle cx="12" cy="10" r="2.5" /></svg>
-              {{ p.location }}
-            </p>
             <h3>{{ p.name }}</h3>
-            <p class="desc">{{ p.text }}</p>
-            <div class="foot">
-              <span>{{ p.size }}</span>
-              <a href="#consultation" class="more">Enquire →</a>
+            <p>{{ p.text }}</p>
+            <div class="meta">
+              <span>{{ p.location }}</span>
+              <a href="#consultation">Know more ↗</a>
             </div>
           </div>
         </article>
@@ -38,20 +42,29 @@ useReveal(root)
 </template>
 
 <style scoped>
-.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
-.card { background: var(--white); border-radius: var(--radius); overflow: hidden; box-shadow: 0 6px 30px -12px rgba(11,18,56,.18); transition: transform .35s ease, box-shadow .35s ease, opacity .8s ease; }
-.card.is-visible:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
-.img { position: relative; aspect-ratio: 4/3; overflow: hidden; }
-.img img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
-.card:hover .img img { transform: scale(1.06); }
-.status { position: absolute; top: 16px; left: 16px; background: var(--navy-800); color: var(--white); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; padding: 7px 14px; border-radius: 999px; font-weight: 600; }
-.body { padding: 24px 26px 26px; }
-.loc { display: flex; align-items: center; gap: 6px; color: var(--sky); font-size: 13px; font-weight: 500; margin: 0 0 8px; filter: brightness(.8); }
-h3 { font-size: 28px; color: var(--navy-900); margin-bottom: 10px; }
-.desc { color: var(--muted); font-size: 14.5px; margin: 0 0 22px; }
-.foot { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #eceef3; padding-top: 16px; font-size: 13px; font-weight: 600; color: var(--navy-700); }
-.more { color: var(--navy-800); letter-spacing: .06em; }
-.more:hover { color: var(--sky); }
-@media (max-width: 960px) { .cards { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 620px) { .cards { grid-template-columns: 1fr; } }
+.projects { background: var(--sand); }
+.head { display: flex; justify-content: space-between; align-items: end; gap: 28px; margin-bottom: 40px; }
+.head .intro-text { margin-bottom: 0; }
+.head .btn { flex: none; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.card { background: var(--white); box-shadow: 0 14px 38px rgba(21,38,61,.07); transition: transform .3s, opacity .8s; }
+.card.is-visible:hover { transform: translateY(-7px); }
+.img { height: 260px; position: relative; overflow: hidden; }
+.img img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
+.card:hover .img img { transform: scale(1.05); }
+.tag { position: absolute; top: 17px; left: 17px; background: var(--navy); color: var(--gold2); padding: 7px 11px; font-size: .6rem; letter-spacing: .13em; text-transform: uppercase; }
+.body { padding: 25px; }
+h3 { font-size: 1.65rem; margin-bottom: 8px; }
+.body p { font-size: .86rem; color: var(--muted); min-height: 70px; }
+.meta { display: flex; justify-content: space-between; gap: 10px; align-items: center; border-top: 1px solid var(--line); padding-top: 15px; margin-top: 18px; font-size: .69rem; color: var(--muted); }
+.meta a { font-weight: 800; color: var(--navy); letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
+.meta a:hover { color: var(--gold); }
+@media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 680px) {
+  .head { display: block; }
+  .head .btn { margin-top: 15px; }
+  .grid { grid-template-columns: 1fr; }
+  .body p { min-height: 0; }
+  .img { height: 235px; }
+}
 </style>
