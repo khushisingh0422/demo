@@ -4,7 +4,8 @@ interface Lead {
   name: string
   phone: string
   email?: string
-  interest?: string
+  project?: string
+  visitDate?: string
   message?: string
   website?: string // honeypot
 }
@@ -22,7 +23,8 @@ export default defineEventHandler(async (event) => {
     name: clip(raw?.name, 80),
     phone: clip(raw?.phone, 20),
     email: clip(raw?.email, 120),
-    interest: clip(raw?.interest, 60),
+    project: clip(raw?.project, 60),
+    visitDate: clip(raw?.visitDate, 20),
     message: clip(raw?.message, 1000),
     submittedAt: new Date().toISOString(),
   }
@@ -54,8 +56,8 @@ export default defineEventHandler(async (event) => {
       from: `"VD Vanchers Website" <${cfg.smtpUser}>`,
       to: cfg.leadEmailTo,
       replyTo: lead.email || undefined,
-      subject: `New website enquiry — ${lead.name}`,
-      html: `<h2>New website enquiry</h2><table border="1" cellspacing="0">${rows}</table>`,
+      subject: `New consultation request — ${lead.name}`,
+      html: `<h2>New consultation request</h2><table border="1" cellspacing="0">${rows}</table>`,
     }))
   }
 

@@ -5,16 +5,16 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: { lang: 'en' },
-      title: 'VD Vanchers | Real Estate & Land Development',
+      title: 'VD Vanchers | Luxury Farmhouses in Sector 135, Noida',
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: 'VD Vanchers — real estate development, residential plots and farmhouse communities across Delhi NCR and beyond.' },
+        { name: 'description', content: 'Premium luxury farmhouses in Sector 135, Noida — countryside living just minutes from Delhi NCR.' },
       ],
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
-        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap' },
+        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap' },
       ],
     },
   },

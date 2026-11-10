@@ -8,13 +8,12 @@ npm run build      # production build (.output/)
 
 ## Page sections (app.vue)
 Header/nav (logo) → Hero slider (3 banners, auto every 5s) → Who We Are → Stats counters →
-Projects → Testimonials → Our Expertise (what we offer) → Enquiry form → Footer
+Projects → Testimonials → What We Offer (+ FAQ) → Consultation form → Footer
 
 ## Editing content
 All text, numbers, images, projects and testimonials are in **`data/site.ts`**.
-Items marked `PLACEHOLDER` (2 of the 3 testimonials) and stats marked `*` need confirming.
-Images are Unsplash stock photos (from the concept) — swap the URLs in `data/site.ts` for real project photos.
-The logo is the CSS diamond mark in `components/BrandLogo.vue`.
+Items marked `PLACEHOLDER` (stats, project details, testimonials) are samples — replace with real data.
+Images live in `public/images/`. Logo = VD Vanchers diamond mark (`components/BrandLogo.vue`); colours in `assets/css/main.css`.
 
 ## Consultation form → Google Sheet and/or Email
 Copy `.env.example` to `.env` and fill **one or both**:

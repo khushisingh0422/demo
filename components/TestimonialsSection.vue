@@ -3,54 +3,67 @@ import { testimonials } from '~/data/site'
 
 const current = ref(0)
 let timer: ReturnType<typeof setInterval> | undefined
-function go(i: number) {
+const go = (i: number) => {
   current.value = (i + testimonials.length) % testimonials.length
   clearInterval(timer)
-  timer = setInterval(() => { current.value = (current.value + 1) % testimonials.length }, 6000)
+  timer = setInterval(() => go(current.value + 1), 6000)
 }
+const initials = (n: string) => n.split(/\s+/).filter(w => /^[A-Z]/.test(w)).slice(0, 2).map(w => w[0]).join('')
 onMounted(() => go(0))
 onBeforeUnmount(() => clearInterval(timer))
 </script>
 
 <template>
-  <section id="testimonials" class="section reviews">
-    <div class="container wrap">
-      <div class="eyebrow">Client words</div>
-      <div class="quote-mark" aria-hidden="true">“</div>
-
-      <div class="viewport">
-        <div class="track" :style="{ transform: `translateX(-${current * 100}%)` }">
-          <figure v-for="(t, i) in testimonials" :key="i" class="slide" :aria-hidden="i !== current">
-            <blockquote class="quote">“{{ t.quote }}”</blockquote>
-            <figcaption class="by">{{ t.name }} · {{ t.role }}</figcaption>
-          </figure>
-        </div>
+  <section id="testimonials" class="section testi">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Client Reviews &amp; Feedback</span>
+        <h2 class="section-title light">What Our Buyers &amp; Investors Say</h2>
       </div>
 
-      <div v-if="testimonials.length > 1" class="controls">
-        <button class="arrow" aria-label="Previous testimonial" @click="go(current - 1)">←</button>
-        <div class="dots">
-          <button v-for="(_, i) in testimonials" :key="i" :class="{ active: i === current }" :aria-label="`Testimonial ${i + 1}`" @click="go(i)" />
+      <div class="stage">
+        <span class="quote-mark" aria-hidden="true">“</span>
+        <div class="track" :style="{ transform: `translateX(-${current * 100}%)` }">
+          <figure v-for="(t, i) in testimonials" :key="i" class="slide" :aria-hidden="i !== current">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>{{ t.quote }}</blockquote>
+            <figcaption>
+              <span class="avatar">{{ initials(t.name) }}</span>
+              <span><strong>{{ t.name }}</strong><small>{{ t.role }}</small></span>
+            </figcaption>
+          </figure>
         </div>
-        <button class="arrow" aria-label="Next testimonial" @click="go(current + 1)">→</button>
+
+        <div class="controls">
+          <button aria-label="Previous testimonial" @click="go(current - 1)">←</button>
+          <div class="dots">
+            <button v-for="(_, i) in testimonials" :key="i" :class="{ active: i === current }" :aria-label="`Testimonial ${i + 1}`" @click="go(i)" />
+          </div>
+          <button aria-label="Next testimonial" @click="go(current + 1)">→</button>
+        </div>
       </div>
     </div>
   </section>
 </template>
 
 <style scoped>
-.reviews { background: #e7e2d8; text-align: center; }
-.wrap { max-width: 850px; }
-.quote-mark { font-family: var(--serif); font-size: 5rem; color: var(--gold); line-height: .8; }
-.viewport { overflow: hidden; }
+.testi { background: var(--navy-900); color: var(--white); position: relative; overflow: hidden; }
+.testi::before { content: ''; position: absolute; width: 520px; height: 520px; border-radius: 50%; background: radial-gradient(circle, rgba(197,163,106,.16), transparent 70%); top: -180px; right: -160px; }
+.light { color: var(--white); }
+.stage { position: relative; max-width: 860px; margin: 0 auto; overflow: hidden; text-align: center; }
+.quote-mark { font-family: var(--serif); font-size: 180px; line-height: .6; color: var(--gold); opacity: .4; display: block; height: 70px; }
 .track { display: flex; transition: transform .7s cubic-bezier(.7,0,.3,1); }
-.slide { flex: 0 0 100%; margin: 0; padding: 0 8px; }
-.quote { font-family: var(--serif); font-size: clamp(1.45rem, 3vw, 2.1rem); line-height: 1.45; color: var(--navy); margin: 20px 0 24px; }
-.by { font-size: .7rem; letter-spacing: .13em; text-transform: uppercase; color: var(--muted); }
-.controls { display: flex; align-items: center; justify-content: center; gap: 22px; margin-top: 36px; }
-.arrow { width: 44px; height: 44px; border: 1px solid var(--gold); background: none; color: var(--navy); cursor: pointer; transition: .25s; }
-.arrow:hover { background: var(--gold); }
-.dots { display: flex; gap: 9px; }
-.dots button { width: 28px; height: 3px; border: 0; padding: 0; background: rgba(21,38,61,.2); cursor: pointer; }
-.dots button.active { background: var(--gold); }
+.slide { flex: 0 0 100%; margin: 0; padding: 0 12px; }
+.stars { color: var(--gold); letter-spacing: 4px; margin-bottom: 18px; }
+blockquote { font-family: var(--serif); font-size: clamp(21px, 2.5vw, 28px); line-height: 1.5; margin: 0 0 32px; font-style: italic; color: rgba(255,255,255,.92); }
+figcaption { display: inline-flex; align-items: center; gap: 14px; text-align: left; }
+.avatar { width: 52px; height: 52px; border-radius: 50%; background: var(--gold); color: var(--navy-900); display: grid; place-items: center; font-weight: 600; letter-spacing: .05em; }
+figcaption strong { display: block; font-size: 16px; }
+figcaption small { color: var(--silver); font-size: 13px; }
+.controls { display: flex; align-items: center; justify-content: center; gap: 24px; margin-top: 40px; }
+.controls > button { width: 46px; height: 46px; border-radius: 50%; border: 1px solid rgba(255,255,255,.3); background: none; color: var(--white); cursor: pointer; font-size: 18px; transition: .2s; }
+.controls > button:hover { background: var(--gold); border-color: var(--gold); color: var(--navy-900); }
+.dots { display: flex; gap: 8px; }
+.dots button { width: 8px; height: 8px; border-radius: 999px; border: 0; padding: 0; background: rgba(255,255,255,.35); cursor: pointer; transition: width .3s; }
+.dots button.active { width: 28px; background: var(--gold); }
 </style>

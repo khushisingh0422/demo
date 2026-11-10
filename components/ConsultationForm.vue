@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { contact, enquiryInterests } from '~/data/site'
+import { contact, projects } from '~/data/site'
 
-const blank = { name: '', phone: '', email: '', interest: enquiryInterests[0], message: '', website: '' }
+const blank = { name: '', phone: '', email: '', project: '', visitDate: '', message: '', website: '' }
 const form = reactive({ ...blank })
 const state = ref<'idle' | 'sending' | 'success' | 'error'>('idle')
 const errorMsg = ref('')
@@ -15,106 +15,97 @@ async function submit() {
     Object.assign(form, blank)
   } catch (e: any) {
     state.value = 'error'
-    errorMsg.value = e?.data?.statusMessage || `Something went wrong. Please call us on ${contact.phone}.`
+    errorMsg.value = e?.data?.statusMessage || 'Something went wrong. Please call us directly.'
   }
 }
 </script>
 
 <template>
-  <section id="consultation" class="section contact">
+  <section id="consultation" class="section consult">
     <div class="container grid">
-      <div class="copy">
-        <div class="eyebrow">Let's connect</div>
-        <h2>Let's find the right opportunity for you.</h2>
-        <p>Tell us what you are looking for. Our team will connect with you to understand your requirements and help you explore suitable property options.</p>
-        <div class="detail">
-          <span class="icon">⌖</span>
-          <div><small>Visit our office</small><strong>{{ contact.address }}</strong></div>
-        </div>
-        <div class="detail">
-          <span class="icon">✆</span>
-          <div><small>Call us</small><a :href="`tel:${contact.phoneHref}`"><strong>{{ contact.phone }}</strong></a></div>
-        </div>
-        <div class="detail">
-          <span class="icon">✉</span>
-          <div><small>Email</small><a :href="`mailto:${contact.email}`"><strong>{{ contact.email }}</strong></a></div>
-        </div>
+      <div class="info">
+        <span class="eyebrow">Free Consultation</span>
+        <h2 class="section-title light">Book Your Site Visit Today</h2>
+        <p>Share a few details and our property advisor will call you back within 24 hours to plan a personal tour.</p>
+        <ul>
+          <li>
+            <span class="ic">☎</span>
+            <div><small>Call us</small><a :href="`tel:${contact.phone}`">{{ contact.phone }}</a></div>
+          </li>
+          <li>
+            <span class="ic">✉</span>
+            <div><small>Email</small><a :href="`mailto:${contact.email}`">{{ contact.email }}</a></div>
+          </li>
+          <li>
+            <span class="ic">⌂</span>
+            <div><small>Visit</small><span>{{ contact.address }}</span></div>
+          </li>
+        </ul>
       </div>
 
-      <form class="form" @submit.prevent="submit">
-        <h3>Speak to our property expert</h3>
-        <p class="sub">Share your details and we will get in touch.</p>
+      <form class="card" @submit.prevent="submit">
+        <h3>Request a Consultation</h3>
         <!-- honeypot: real users never see or fill this -->
         <input v-model="form.website" type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
-        <div class="fields">
-          <div class="field">
-            <label for="f-name">Full name *</label>
-            <input id="f-name" v-model.trim="form.name" required maxlength="80" placeholder="Your name" />
-          </div>
-          <div class="field">
-            <label for="f-phone">Phone number *</label>
-            <input id="f-phone" v-model.trim="form.phone" type="tel" required pattern="[0-9+\-\s]{8,15}" placeholder="Your contact number" />
-          </div>
-          <div class="field">
-            <label for="f-email">Email address</label>
-            <input id="f-email" v-model.trim="form.email" type="email" maxlength="120" placeholder="you@example.com" />
-          </div>
-          <div class="field">
-            <label for="f-interest">I am interested in</label>
-            <select id="f-interest" v-model="form.interest">
-              <option v-for="o in enquiryInterests" :key="o">{{ o }}</option>
-            </select>
-          </div>
-          <div class="field full">
-            <label for="f-message">Message</label>
-            <textarea id="f-message" v-model.trim="form.message" maxlength="1000" placeholder="Tell us a little about what you are looking for..." />
-          </div>
+        <div class="row">
+          <label>Full Name*<input v-model.trim="form.name" required maxlength="80" placeholder="Your name" /></label>
+          <label>Phone*<input v-model.trim="form.phone" type="tel" required pattern="[0-9+\-\s]{8,15}" placeholder="+91 98xxxxxxxx" /></label>
         </div>
+        <div class="row">
+          <label>Email<input v-model.trim="form.email" type="email" maxlength="120" placeholder="you@example.com" /></label>
+          <label>Interested In
+            <select v-model="form.project">
+              <option value="">Select a project</option>
+              <option v-for="p in projects" :key="p.name">{{ p.name }}</option>
+              <option>Not sure yet</option>
+            </select>
+          </label>
+        </div>
+        <label>Preferred Visit Date<input v-model="form.visitDate" type="date" /></label>
+        <label>Message<textarea v-model.trim="form.message" rows="3" maxlength="1000" placeholder="Tell us what you're looking for" /></label>
 
-        <button class="btn" type="submit" :disabled="state === 'sending'">
-          {{ state === 'sending' ? 'Sending…' : 'Send Enquiry ↗' }}
+        <button class="btn btn-dark submit" :disabled="state === 'sending'">
+          {{ state === 'sending' ? 'Sending…' : 'Get a Call Back' }}
         </button>
-        <p class="disclaimer">By submitting this form, you agree to be contacted by VD Vanchers regarding your enquiry.</p>
-        <p v-if="state === 'success'" class="status ok" role="status">Thank you! Our team will be in touch shortly.</p>
-        <p v-if="state === 'error'" class="status err" role="alert">{{ errorMsg }}</p>
+        <p v-if="state === 'success'" class="msg ok" role="status">Thank you! Our team will contact you shortly.</p>
+        <p v-if="state === 'error'" class="msg err" role="alert">{{ errorMsg }}</p>
       </form>
     </div>
   </section>
 </template>
 
 <style scoped>
-.contact { background: var(--paper); }
-.grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 70px; align-items: start; }
-.copy p { color: var(--muted); }
-.detail { display: flex; gap: 14px; align-items: center; margin-top: 24px; }
-.icon { width: 43px; height: 43px; flex: none; border: 1px solid var(--gold); display: grid; place-items: center; color: var(--navy); }
-.detail small { display: block; color: var(--muted); font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; }
-.detail strong { font-size: .9rem; font-weight: 600; }
-.detail a:hover strong { color: var(--gold); }
-
-.form { background: var(--white); padding: 40px; box-shadow: 0 18px 55px rgba(21,38,61,.09); }
-.form h3 { font-size: 1.8rem; margin-bottom: 8px; }
-.sub { font-size: .84rem; color: var(--muted); margin-bottom: 25px; }
-.hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
-.fields { display: grid; grid-template-columns: 1fr 1fr; gap: 17px; }
-.field { display: flex; flex-direction: column; gap: 7px; }
-.field.full { grid-column: 1 / -1; }
-label { font-size: .66rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: #536273; }
-input, select, textarea { border: 1px solid #e0e3e6; background: #fbfcfd; padding: 13px 14px; outline: none; width: 100%; color: var(--ink); border-radius: 0; transition: border-color .2s; }
-input:focus, select:focus, textarea:focus { border-color: var(--gold); }
-textarea { min-height: 100px; resize: vertical; }
-.form .btn { margin-top: 20px; }
-.form .btn:disabled { opacity: .6; cursor: wait; }
-.disclaimer { font-size: .67rem; color: #87919a; margin: 14px 0 0; }
-.status { font-size: .85rem; margin: 12px 0 0; padding: 10px 12px; }
-.ok { color: #23633d; background: #e8f3ec; }
-.err { color: #9b2c2c; background: #fbeaea; }
-@media (max-width: 900px) { .grid { gap: 40px; } }
-@media (max-width: 680px) {
-  .grid { grid-template-columns: 1fr; }
-  .fields { grid-template-columns: 1fr; }
-  .field.full { grid-column: auto; }
-  .form { padding: 27px 22px; }
+.consult {
+  background: linear-gradient(120deg, rgba(16,30,48,.95), rgba(32,57,84,.88)), url('/images/modern-house-facade.jpg') center/cover;
+  color: var(--white);
 }
+.grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 64px; align-items: center; }
+.light { color: var(--white); }
+.info > p { color: rgba(255,255,255,.8); margin: 0 0 32px; }
+.info ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 22px; }
+.info li { display: flex; gap: 16px; align-items: center; }
+.ic { width: 48px; height: 48px; flex: none; border-radius: 50%; border: 1px solid rgba(197,163,106,.6); display: grid; place-items: center; color: var(--gold); font-size: 18px; }
+.info small { display: block; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--silver); }
+.info a:hover { color: var(--gold-light); }
+
+.card { background: var(--white); color: var(--ink); border-radius: 18px; padding: 40px; box-shadow: 0 30px 60px -20px rgba(0,0,0,.5); display: grid; gap: 16px; }
+.card h3 { font-size: 30px; color: var(--navy-900); margin-bottom: 4px; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+label { display: grid; gap: 6px; font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--navy-700); }
+input, select, textarea {
+  font: 400 15px var(--sans); color: var(--ink); text-transform: none; letter-spacing: 0;
+  padding: 13px 14px; border: 1px solid #dcdfe8; border-radius: 10px; background: #fafbfd; width: 100%;
+  transition: border-color .2s, box-shadow .2s;
+}
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(197,163,106,.22); background: var(--white); }
+textarea { resize: vertical; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.submit { width: 100%; padding: 17px; margin-top: 6px; }
+.submit:disabled { opacity: .6; cursor: wait; }
+.msg { margin: 0; font-size: 14px; padding: 12px 14px; border-radius: 10px; }
+.ok { background: #e7f6ec; color: #1d6b3a; }
+.err { background: #fdecec; color: #a12a2a; }
+@media (max-width: 900px) { .grid { grid-template-columns: 1fr; gap: 40px; } }
+@media (max-width: 520px) { .row { grid-template-columns: 1fr; } .card { padding: 28px 20px; } }
 </style>
