@@ -29,7 +29,10 @@ export default defineEventHandler(async (event) => {
     submittedAt: new Date().toISOString(),
   }
 
-  if (!lead.name || !/^[0-9+\-\s]{8,15}$/.test(lead.phone)) {
+  const validPhone = /^[0-9+\-\s]{8,15}$/.test(lead.phone)
+  const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(lead.email)
+  // Main form needs name + phone; the footer "Book Now" box sends an email only.
+  if (!lead.name || !(validPhone || (!lead.phone && validEmail))) {
     throw createError({ statusCode: 400, statusMessage: 'Please enter your name and a valid phone number.' })
   }
 

@@ -1,49 +1,32 @@
 <script setup lang="ts">
-import { offerings, faqs } from '~/data/site'
+import { offer } from '~/data/site'
 const root = ref<HTMLElement | null>(null)
 const openFaq = ref<number | null>(0)
 useReveal(root)
-
-const icons: Record<string, string> = {
-  garden: 'M12 22V12M12 12c0-4 3-7 7-7 0 4-3 7-7 7zm0 0c0-4-3-7-7-7 0 4 3 7 7 7zM5 22h14',
-  home: 'M3 11l9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1V11z',
-  pool: 'M2 18c2 0 2-1.5 4-1.5S8 18 10 18s2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5M2 22c2 0 2-1.5 4-1.5S8 22 10 22s2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5M8 15V5a2 2 0 0 1 4 0M16 15V5a2 2 0 0 0-4 0M8 9h8',
-  shield: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM9 12l2 2 4-4',
-}
 </script>
 
 <template>
+  <!-- Layout follows dvayu.co.in "What We Offer" -->
   <section id="offer" ref="root" class="section offer">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">What We Offer</span>
-        <h2 class="section-title">Everything You Need for Countryside Living</h2>
-        <p>Every farmhouse comes with amenities designed for comfort, privacy and celebration.</p>
-      </div>
-
-      <div class="grid">
-        <div v-for="(o, i) in offerings" :key="o.title" class="item reveal" :style="{ transitionDelay: `${i * 0.1}s` }">
-          <span class="icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path :d="icons[o.icon]" /></svg>
-          </span>
-          <h3>{{ o.title }}</h3>
-          <p>{{ o.text }}</p>
-        </div>
-      </div>
-
-      <div class="faq-wrap reveal">
-        <div class="faq-img">
-          <img src="/images/real-estate-agent.jpg" alt="Farmhouse" loading="lazy" />
-        </div>
-        <div class="faq">
-          <span class="eyebrow">Common Questions</span>
-          <h3 class="faq-title">Good to Know</h3>
-          <div v-for="(f, i) in faqs" :key="f.q" class="q" :class="{ open: openFaq === i }">
+    <div class="container grid">
+      <div class="left reveal">
+        <span class="label gold">What We Offer</span>
+        <h2 class="h2">{{ offer.title }}</h2>
+        <div class="faqs">
+          <div v-for="(f, i) in offer.faqs" :key="f.q" class="q" :class="{ open: openFaq === i }">
             <button :aria-expanded="openFaq === i" @click="openFaq = openFaq === i ? null : i">
-              {{ f.q }} <span>{{ openFaq === i ? '−' : '+' }}</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6" /></svg>
+              {{ f.q }}
             </button>
-            <div class="a"><p>{{ f.a }}</p></div>
+            <div class="a"><p v-html="f.a" /></div>
           </div>
+        </div>
+      </div>
+
+      <div class="tiles reveal">
+        <div v-for="t in offer.tiles" :key="t.title" class="tile" :class="{ photo: t.image }">
+          <img v-if="t.image" :src="t.image" alt="" loading="lazy" />
+          <span>{{ t.title }}</span>
         </div>
       </div>
     </div>
@@ -51,25 +34,28 @@ const icons: Record<string, string> = {
 </template>
 
 <style scoped>
-.offer { background: var(--cream); }
-.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-.item { background: var(--white); border-radius: var(--radius); padding: 34px 28px; border: 1px solid #ebe8e0; transition: transform .35s, box-shadow .35s, border-color .35s, opacity .8s; }
-.item.is-visible:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: transparent; }
-.icon { width: 60px; height: 60px; border-radius: 16px; background: var(--navy-800); color: var(--gold); display: grid; place-items: center; margin-bottom: 22px; }
-.item h3 { font-size: 22px; color: var(--navy-900); margin-bottom: 10px; }
-.item p { color: var(--muted); font-size: 14.5px; margin: 0; }
-
-.faq-wrap { margin-top: 80px; display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: center; }
-.faq-img img { width: 100%; aspect-ratio: 5/4; object-fit: cover; border-radius: var(--radius); box-shadow: var(--shadow); }
-.faq-title { font-size: 36px; color: var(--navy-900); margin: 10px 0 24px; }
-.q { border-bottom: 1px solid #e2dfd6; }
-.q button { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 16px; text-align: left; background: none; border: 0; padding: 20px 0; font: 600 16px var(--sans); color: var(--navy-900); cursor: pointer; }
-.q button span { font-size: 22px; color: var(--gold); }
+.offer { background: var(--mint); }
+.grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 90px; align-items: center; }
+.gold { color: #9a7b45; }
+.left .h2 { margin: 18px 0 34px; }
+.q + .q { border-top: 1px solid var(--navy-700); }
+.q button { width: 100%; display: flex; align-items: center; gap: 20px; text-align: left; background: none; border: 0; padding: 18px 0; font: 600 19px var(--sans); color: var(--ink); cursor: pointer; }
+.q button svg { flex: none; transition: transform .3s; }
+.q.open button svg { transform: rotate(180deg); }
 .a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .35s ease; }
-.a > p { overflow: hidden; margin: 0; color: var(--muted); }
+.a > p { overflow: hidden; color: #3d4a57; font-size: 16px; }
+.a > p :deep(strong) { color: var(--navy-900); }
 .open .a { grid-template-rows: 1fr; }
-.open .a > p { padding-bottom: 20px; }
-@media (max-width: 1024px) { .grid { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 860px) { .faq-wrap { grid-template-columns: 1fr; gap: 36px; } }
-@media (max-width: 560px) { .grid { grid-template-columns: 1fr; } }
+.open .a > p { padding-bottom: 26px; }
+
+.tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.tile { position: relative; aspect-ratio: 13/10; border-radius: 14px; overflow: hidden; background: var(--navy-800); display: flex; align-items: center; padding: 34px; }
+.tile:nth-child(4) { background: var(--navy-700); }
+.tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
+.tile.photo::after { content: ''; position: absolute; inset: 0; background: rgba(15,28,46,.45); }
+.tile:hover img { transform: scale(1.05); }
+.tile span { position: relative; z-index: 1; color: var(--white); font-size: 26px; font-weight: 300; line-height: 1.3; }
+.tile:not(.photo) span::before { content: ''; display: block; width: 40px; height: 2px; background: var(--gold); margin-bottom: 18px; }
+@media (max-width: 1000px) { .grid { grid-template-columns: 1fr; gap: 48px; } }
+@media (max-width: 560px) { .tile { padding: 20px; } .tile span { font-size: 18px; } .tiles { gap: 12px; } }
 </style>

@@ -3,7 +3,7 @@
 // Copy the web-app URL into NUXT_SHEET_WEBHOOK_URL in .env.
 // Optional: set NOTIFY_EMAIL to also get an email for every lead (free, no SMTP needed).
 
-const NOTIFY_EMAIL = '' // e.g. ''
+const NOTIFY_EMAIL = 'info@vanchers.com' // e.g. ''
 
 function doPost(e) {
   const data = JSON.parse(e.postData.contents)

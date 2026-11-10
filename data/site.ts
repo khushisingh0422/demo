@@ -1,5 +1,7 @@
 // All site content lives here — edit text, numbers, images without touching components.
-// Items marked "PLACEHOLDER" are sample content: replace with the client's real data before launch.
+// Items marked "PLACEHOLDER" are sample content: replace with real data before launch.
+
+const u = (id: string, w = 1200) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`
 
 export const brand = {
   name: 'VD VANCHERS',
@@ -8,128 +10,160 @@ export const brand = {
 }
 
 export const contact = {
-  phone: '+91-8851510627',
-  email: 'info@dvayu.com',
-  address: 'New Club, Green Beauty Farms, Sector 135, Noida, Uttar Pradesh',
-  socials: [
-    { name: 'Facebook', href: 'https://www.facebook.com/dvayuchateau', icon: 'facebook' },
-    { name: 'Instagram', href: 'https://www.instagram.com/dvayuchateau', icon: 'instagram' },
-    { name: 'YouTube', href: 'https://www.youtube.com/@dvayuchatea', icon: 'youtube' },
-    { name: 'LinkedIn', href: 'https://www.linkedin.com/company/dvayulondon', icon: 'linkedin' },
-  ],
+  phone: '+91 92892 45099',
+  phoneHref: '+919289245099',
+  email: 'info@vanchers.com',
+  address: 'A-33, 5th Floor, Sector 136, Noida – 201304',
+  shortAddress: 'Sector 136, Noida',
+  // Add the real profile URLs here; icons appear only for entries that exist.
+  socials: [] as { name: string; href: string; icon: 'facebook' | 'instagram' | 'youtube' | 'linkedin' }[],
 }
 
 export const navLinks = [
   { label: 'Home', href: '#home' },
   { label: 'About Us', href: '#about' },
   { label: 'Projects', href: '#projects' },
-  { label: 'Amenities', href: '#offer' },
-  { label: 'Testimonials', href: '#testimonials' },
+  { label: 'What We Offer', href: '#offer' },
   { label: 'Contact', href: '#consultation' },
 ]
 
-// Banner text follows the OSR Realtech pattern: small label → bold heading → offer line → 2 CTAs
+// Banner text follows OSR Realtech: pill label → heading (2nd line italic) → bordered subtext → 2 buttons
 export const heroSlides = [
   {
     image: '/images/IMG_9996-scaled.jpg',
-    eyebrow: '41+ Years of Land Development Excellence • Noida & Delhi NCR',
-    title: 'Luxury Farmhouses in Sector 135, Noida.',
-    subtitle: 'Trusted farmhouse developer in Noida. Private Pools, Landscaped Gardens, Gated Farm Communities & Premium Farm Plots.',
+    label: '15+ Years of Real Estate Excellence • Noida & Delhi NCR',
+    title: 'Luxury Farmhouses',
+    accent: 'in Noida & NCR.',
+    subtitle: 'Trusted real estate developer in Noida. Farmhouses, Residential Plots, Farm Plots & Gated Communities.',
   },
   {
     image: '/images/IMG_0112-scaled.jpg',
-    eyebrow: 'Just 15 Minutes from Delhi • Via Noida Expressway',
-    title: 'Redefining Countryside Luxury.',
-    subtitle: 'Open skies, complete privacy and modern comfort — farmhouse living that feels a world away, yet minutes from the city.',
+    label: '700+ Farmhouses Developed • Noida, Vrindavan & Dehradun',
+    title: 'Redefining Countryside',
+    accent: 'Luxury Living.',
+    subtitle: 'Open landscapes, private retreats and modern comfort — just minutes from Delhi NCR.',
   },
   {
     image: '/images/modern-house-facade.jpg',
-    eyebrow: 'Lifestyle + Investment • Complete Legal Clarity',
-    title: 'Find Your Dream Farm With Us.',
-    subtitle: 'Ready-to-move farmhouses and premium farm plots with strong appreciation potential in Noida’s fastest-growing belt.',
+    label: 'Near Noida International Airport • Yamuna Expressway',
+    title: 'Invest Where Growth',
+    accent: 'Is Headed.',
+    subtitle: 'Residential plots and farm land in high-potential growth corridors, with complete legal clarity.',
   },
 ]
 
+// Dvayu-style "Who We Are"
 export const whoWeAre = {
-  title: 'Luxury Farmhouses in Noida',
-  lead: 'We create more than just farmhouses — we create experiences.',
-  body: 'Our mission is to offer premium farmhouse living that feels a world away from the city, yet sits only minutes from it. Backed by over four decades of expertise in land development, every property we build is planned for privacy, greenery and lasting value.',
-  points: [
-    { title: 'Unmatched Location', text: 'Just 15 minutes from Delhi via the Noida Expressway.' },
-    { title: 'Personalized Design', text: 'Customize your layout or choose from curated plans.' },
-    { title: 'Trusted Legacy', text: '41+ years of real-estate experience behind every plot.' },
-    { title: 'Investment-Ready', text: 'High appreciation potential with complete legal clarity.' },
-  ],
-  images: ['/images/IMG_9984-scaled-e1754563184490.jpg', '/images/real-estate-agent.jpg'],
+  title: 'VD Vanchers: Luxury Farmhouses in Noida',
+  body: 'At <strong>VD Vanchers</strong>, we create more than just farmhouses — we create experiences. With <strong>15+ years of expertise in real estate and land development</strong>, our mission is to bring you premium farmhouse living that feels worlds away from the city, yet just minutes from it.',
+  badge: { value: '700+', label: 'Farmhouses Developed' },
+  image: '/images/IMG_9984-scaled-e1754563184490.jpg',
+  circle: '/images/real-estate-agent.jpg',
 }
 
-// OSR Realtech-style counters. PLACEHOLDER values — confirm with client
+// OSR-style numbers card. Values marked * come from the VD concept — confirm with client.
 export const stats = [
-  { value: 41, suffix: '+', label: 'Years of Excellence' },
+  { value: 15, suffix: '+', label: 'Years of Excellence' },
   { value: 5000, suffix: '+', label: 'Happy Families Served' },
-  { value: 100, suffix: '+', label: 'Acres Developed' },
-  { value: 3, suffix: '', label: 'Signature Farm Projects' },
+  { value: 700, suffix: '+', label: 'Farmhouses Developed*' },
+  { value: 5, suffix: '', label: 'Featured Developments' },
 ]
 
-// OSR-style project cards. PLACEHOLDER details (status / type / price / description) — confirm with client
+// OSR-style project cards. Prices are PLACEHOLDER ("Price on Request") until the client shares them.
 export const projects = [
   {
-    name: 'Dvayu Farms',
-    location: 'Sector 135, Noida',
+    name: 'VD Residency',
+    status: 'Under Construction',
+    type: 'Residential Plots',
+    city: 'Yamuna Expressway',
+    location: 'Tappal, Yamuna Expressway',
+    image: u('1600607687939-ce8a6c25118c'),
+    text: 'A residential plot development positioned near the Noida International Airport growth corridor at Tappal, Yamuna Expressway.',
+    price: 'Price on Request',
+  },
+  {
+    name: 'The Royal Farm',
     status: 'Now Selling',
     type: 'Farmhouses',
+    city: 'Vrindavan',
+    location: 'Chhata, Vrindavan',
+    image: u('1600566753086-00f18fb6b3ea'),
+    text: 'A farmhouse opportunity in Chhata, Vrindavan, created for those looking for open surroundings and a private retreat.',
     price: 'Price on Request',
-    image: '/images/IMG_9996-scaled.jpg',
-    text: 'Our flagship community of luxury farmhouses with private pools and landscaped lawns.',
   },
   {
-    name: 'Green Beauty Farms',
-    location: 'New Club, Sector 135, Noida',
+    name: 'Haripriya Enclave',
+    status: 'Ready to Move',
+    type: 'Residential Plots',
+    city: 'Vrindavan',
+    location: 'Vrindavan, Uttar Pradesh',
+    image: u('1600047509807-ba8f99d2cdde'),
+    text: 'A delivered residential project in Vrindavan, with plot options and a mix of essential and contemporary amenities.',
+    price: 'Price on Request',
+  },
+  {
+    name: 'The Highway Farms',
+    status: 'Fresh Launch',
+    type: 'Farm Plots',
+    city: 'Noida',
+    location: 'Noida Region',
+    image: u('1600607687920-4e2a09cf159d'),
+    text: 'A community combining access to key road networks with the appeal of a quieter, more open farmhouse setting.',
+    price: 'Price on Request',
+  },
+  {
+    name: 'Nature Valley',
     status: 'Ready to Move',
     type: 'Farmhouses',
+    city: 'Dehradun',
+    location: 'Dehradun, Uttarakhand',
+    image: u('1600585154340-be6161a56a0c'),
+    text: 'A delivered, nature-led farmhouse destination in Dehradun, designed around open landscapes and a relaxed lifestyle.',
     price: 'Price on Request',
-    image: '/images/IMG_0112-scaled.jpg',
-    text: 'A green, gated enclave with a clubhouse, wide internal roads and 24×7 security.',
-  },
-  {
-    name: 'Alaska Farms',
-    location: 'Noida Expressway Belt',
-    status: 'Limited Plots',
-    type: 'Farm Plots',
-    price: 'Price on Request',
-    image: '/images/modern-house-facade.jpg',
-    text: 'Premium farm plots for buyers who want to design and build their own countryside retreat.',
   },
 ]
 
-// PLACEHOLDER testimonials — replace with real client reviews before launch
 export const testimonials = [
   {
-    name: 'Rajiv Malhotra',
-    role: 'Farmhouse Owner',
-    quote: 'We wanted a weekend escape that didn’t mean a three-hour drive. This gave us exactly that — fresh air, a private pool, and we’re home from South Delhi in under 30 minutes.',
+    name: 'Azam Siddique',
+    role: 'Delhi',
+    quote: 'The service provided by VD Vanchers was incredible. They helped me to clear all my doubts & queries about purchasing the property. Thanks for all your help & support.',
   },
+  // PLACEHOLDER — replace with a real client review
   {
-    name: 'Anita & Sanjay Kapoor',
-    role: 'Owners, Green Beauty Farms',
-    quote: 'The team helped us customize every detail of the layout. Paperwork was transparent from day one, which gave us real peace of mind.',
-  },
-  {
-    name: 'Vikram Sethi',
-    role: 'Investor',
-    quote: 'I bought for the investment and stayed for the lifestyle. The appreciation in Sector 135 has been outstanding, and the property is beautifully maintained.',
+    name: 'Client Name',
+    role: 'Farmhouse Owner, Noida',
+    quote: 'From the first site visit to registration, the team kept everything transparent. We always knew what the next step was.',
   },
 ]
 
-export const offerings = [
-  { title: 'Spacious Landscaped Gardens', text: 'Manicured lawns, fruit trees and walking paths that make every morning feel like a retreat.', icon: 'garden' },
-  { title: 'Living & Dining Spaces', text: 'Open, light-filled living and dining areas built for family gatherings and celebrations.', icon: 'home' },
-  { title: 'Private Swimming Pools', text: 'Your own pool to unwind in, surrounded by greenery and complete privacy.', icon: 'pool' },
-  { title: 'Parking & Security Systems', text: 'Gated access, CCTV surveillance and ample covered parking for total peace of mind.', icon: 'shield' },
-]
+// Dvayu-style "What We Offer": FAQ on the left, 2×2 tiles on the right (tiles with `image` show a photo)
+export const offer = {
+  title: 'Farms That Transform Your Living Experience',
+  tiles: [
+    { title: 'Spacious Landscaped Gardens' },
+    { title: 'Living and Dining Spaces', image: '/images/IMG_0112-scaled.jpg' },
+    { title: 'Parking and Security Systems', image: '/images/IMG_9996-scaled.jpg' },
+    { title: 'Private Swimming Pools' },
+  ],
+  faqs: [
+    { q: 'How far are your farmhouses from Delhi?', a: 'Our Noida projects are around <strong>15 minutes from Delhi</strong>, with easy access via the Noida Expressway — ideal for both weekend getaways and long-term living.' },
+    { q: 'Can I customize the design of my farmhouse?', a: 'Yes. We offer flexible layout options and design support so your farmhouse reflects your style.' },
+    { q: 'Is this a good investment option?', a: 'Rapid development across Noida and the Yamuna Expressway, along with rising demand, gives our projects strong appreciation potential — a lifestyle and a financial investment.' },
+  ],
+}
 
-export const faqs = [
-  { q: 'How far is the farmhouse from Delhi?', a: 'About 15 minutes from Delhi with easy access via the Noida Expressway — ideal for weekend getaways and long-term living.' },
-  { q: 'Can I customize the design of my farmhouse?', a: 'Yes. We offer flexible layout options and full design support so your farmhouse reflects your style.' },
-  { q: 'Is this a good investment option?', a: 'Rapid development in Noida and rising demand give these farmhouses strong appreciation potential — a lifestyle and a financial investment.' },
-]
+export const footer = {
+  tagline: 'Experience modern farmhouse living surrounded by greenery, comfort, and peace — all just minutes away from Noida.',
+  quickLinks: [
+    { label: 'About Us', href: '#about' },
+    { label: 'Projects', href: '#projects' },
+    { label: 'What We Offer', href: '#offer' },
+    { label: 'Testimonials', href: '#testimonials' },
+  ],
+  findUs: [
+    { label: 'Contact Us', href: '#consultation' },
+    { label: 'Book a Site Visit', href: '#consultation' },
+    { label: 'Call Us', href: `tel:${contact.phoneHref}` },
+  ],
+}
