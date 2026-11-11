@@ -102,7 +102,7 @@ useReveal(root)
 
 /* Portrait / monogram */
 .portrait { position: relative; min-height: 360px; overflow: hidden; background: #0a1422; }
-.portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(.25) contrast(1.05); transition: transform 1.2s ease; }
+.portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 20%; filter: grayscale(.25) contrast(1.05); transition: transform 1.2s ease; }
 .card:hover .portrait img { transform: scale(1.05); }
 .monogram {
   position: absolute; inset: 0; display: grid; place-items: center;
@@ -156,15 +156,47 @@ blockquote::before {
 @media (max-width: 1024px) {
   .cards { grid-template-columns: 1fr; max-width: 640px; }
 }
-@media (max-width: 560px) {
-  .directors { padding: 84px 0 96px; }
-  .head { margin-bottom: 52px; }
-  .card { grid-template-columns: minmax(0, 1fr); }
-  .portrait { min-height: 260px; }
+@media (max-width: 640px) {
+  .directors { padding: 80px 0 90px; }
+  .head { margin-bottom: 44px; }
+  .head h2 { margin: 20px 0 16px; }
+  .head p { font-size: 15.5px; line-height: 1.7; }
+  .kick { gap: 12px; letter-spacing: .3em; }
+  .kick i { width: 28px; }
+
+  .cards { gap: 28px; max-width: 420px; }
+  .card { grid-template-columns: minmax(0, 1fr); border-radius: 6px; }
+
+  /* tall portrait so the face is never cropped */
+  .portrait { min-height: 0; aspect-ratio: 4 / 5; }
+  .portrait img { object-position: center 15%; }
+  /* blend the photo into the text panel */
+  .portrait::before {
+    content: ''; position: absolute; inset: auto 0 0 0; height: 45%; z-index: 1; pointer-events: none;
+    background: linear-gradient(180deg, transparent, rgba(11, 22, 37, .92));
+  }
+  .corner, .index { z-index: 2; }
+  .corner { width: 22px; height: 22px; }
+  .corner.tl { top: 14px; left: 14px; }
+  .corner.br { bottom: 14px; right: 14px; }
+  .index { left: 18px; bottom: 14px; }
   .monogram span { font-size: 80px; }
-  .body { padding: 32px 24px 34px; }
-  .body h3 { font-size: 26px; }
-  .watermark { width: 340px; right: -100px; bottom: -80px; }
+
+  .body { padding: 28px 24px 30px; text-align: center; align-items: center; }
+  .body h3 { font-size: 26px; margin-top: 10px; }
+  .rule { margin: 18px auto; }
+  blockquote { font-size: 17px; line-height: 1.55; }
+  blockquote::before { height: 24px; font-size: 54px; }
+  .sign { margin-top: 18px; }
+  .watermark { width: 320px; right: -100px; bottom: -80px; }
+}
+
+/* touch screens: no hover lift/zoom that sticks after a tap */
+@media (hover: none) {
+  .card.is-visible:hover { transform: none; }
+  .card:hover .portrait img, .card:hover .monogram span { transform: none; }
+  .card:hover .portrait::after { transform: translateX(-100%); }
+  .card:hover .rule { width: 48px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .card, .portrait img, .monogram span, .portrait::after, .rule { transition: none; }

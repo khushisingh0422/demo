@@ -137,14 +137,14 @@ export const directors = {
       role: 'Founder & Director',
       initials: 'VT',
       quote: 'Ambitious and driven, thrive on challenge and constantly set goals.',
-      photo: '',
+      photo: '/images/director-vansh-thakur.avif',
     },
     {
       name: 'Deepanshu Goyal',
       role: 'Co-Founder & Director',
       initials: 'DG',
       quote: 'Always looking for an opportunity to do better and achieve greatness.',
-      photo: '',
+      photo: '/images/director-deepanshu-goyal.avif',
     },
   ],
 }
