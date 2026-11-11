@@ -7,6 +7,7 @@ export const brand = {
   name: 'VD VANCHERS',
   tagline: 'Real Estate & Development',
   mark: 'V',
+  logo: '/images/vd-vanchers-logo.png', // from vanchers.com
 }
 
 export const contact = {
@@ -123,6 +124,31 @@ export const projects = [
   },
 ]
 
+// Leadership — names, titles and lines from vanchers.com "Meet the Team".
+// Add a `photo` path (e.g. '/images/vansh-thakur.jpg') to show a portrait instead of the monogram.
+export const directors = {
+  kicker: 'Leadership',
+  title: 'The Minds Behind',
+  accent: 'VD Vanchers.',
+  intro: 'Founded in 2019 in Noida, VD Group is led by two directors who share one standard: every acre we develop should be one we would be proud to own.',
+  people: [
+    {
+      name: 'Vansh Thakur',
+      role: 'Founder & Director',
+      initials: 'VT',
+      quote: 'Ambitious and driven, thrive on challenge and constantly set goals.',
+      photo: '',
+    },
+    {
+      name: 'Deepanshu Goyal',
+      role: 'Co-Founder & Director',
+      initials: 'DG',
+      quote: 'Always looking for an opportunity to do better and achieve greatness.',
+      photo: '',
+    },
+  ],
+}
+
 export const testimonials = [
   {
     name: 'Azam Siddique',
@@ -158,6 +184,7 @@ export const footer = {
   quickLinks: [
     { label: 'About Us', href: '#about' },
     { label: 'Projects', href: '#projects' },
+    { label: 'Our Directors', href: '#directors' },
     { label: 'What We Offer', href: '#offer' },
     { label: 'Testimonials', href: '#testimonials' },
   ],

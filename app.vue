@@ -6,6 +6,7 @@
       <WhoWeAre />
       <StatsCounter />
       <ProjectsSection />
+      <DirectorsSection />
       <TestimonialsSection />
       <WhatWeOffer />
       <ConsultationForm />
