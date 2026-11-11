@@ -23,7 +23,10 @@ useReveal(root)
           :style="{ transitionDelay: `${i * 140}ms` }"
         >
           <div class="portrait">
-            <img v-if="d.photo" :src="d.photo" :alt="d.name" loading="lazy" />
+            <picture v-if="d.photo">
+              <source :srcset="d.photo.replace(/\.jpg$/, '.avif')" type="image/avif" />
+              <img :src="d.photo" :alt="d.name" loading="lazy" decoding="async" />
+            </picture>
             <div v-else class="monogram" aria-hidden="true">
               <span>{{ d.initials }}</span>
             </div>
@@ -168,7 +171,8 @@ blockquote::before {
   .card { grid-template-columns: minmax(0, 1fr); border-radius: 6px; }
 
   /* tall portrait so the face is never cropped */
-  .portrait { min-height: 0; aspect-ratio: 4 / 5; }
+  /* padding-top gives a 4:5 box in every browser (aspect-ratio collapses on older iOS Safari) */
+  .portrait { min-height: 0; height: 0; padding-top: 125%; }
   .portrait img { object-position: center 15%; }
   /* blend the photo into the text panel */
   .portrait::before {
