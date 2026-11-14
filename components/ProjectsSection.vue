@@ -1,26 +1,30 @@
 <script setup lang="ts">
-import { projects } from '~/data/site'
+import projectsData from '~/data/projects.json'
 
-// OSR Realtech pattern: location filter tabs + card carousel with prev/next arrows
-const tabs = ['All', ...new Set(projects.map(p => p.city))]
+const projects = projectsData
+
+const tabs = ['All', ...new Set(projects.map((p) => p.city))]
 const active = ref('All')
-const visible = computed(() => active.value === 'All' ? projects : projects.filter(p => p.city === active.value))
+const visible = computed(() => active.value === 'All' ? projects : projects.filter((p) => p.city === active.value))
 
 const track = ref<HTMLElement | null>(null)
 const atStart = ref(true)
 const atEnd = ref(false)
+
 function update() {
   const el = track.value
   if (!el) return
   atStart.value = el.scrollLeft <= 4
   atEnd.value = el.scrollLeft + el.clientWidth >= el.scrollWidth - 4
 }
+
 function scroll(dir: 1 | -1) {
   const el = track.value
   if (!el) return
   const card = el.querySelector<HTMLElement>('.card')
   el.scrollBy({ left: dir * ((card?.offsetWidth ?? 400) + 24), behavior: 'smooth' })
 }
+
 watch(active, () => nextTick(() => { track.value?.scrollTo({ left: 0 }); update() }))
 onMounted(() => { update(); window.addEventListener('resize', update) })
 onBeforeUnmount(() => window.removeEventListener('resize', update))
@@ -36,7 +40,7 @@ onBeforeUnmount(() => window.removeEventListener('resize', update))
           <p>Browse verified farmhouses, farm plots and residential plot developments across Noida, the Yamuna Expressway, Vrindavan and Dehradun.</p>
         </div>
         <div class="head-actions">
-          <a href="#consultation" class="view-all">View All Properties <span>→</span></a>
+          <NuxtLink to="/projects" class="view-all">View All Properties <span>→</span></NuxtLink>
           <button class="circle-btn" :disabled="atStart" aria-label="Previous projects" @click="scroll(-1)">‹</button>
           <button class="circle-btn" :disabled="atEnd" aria-label="Next projects" @click="scroll(1)">›</button>
         </div>
@@ -60,7 +64,7 @@ onBeforeUnmount(() => window.removeEventListener('resize', update))
       <div ref="track" class="track" @scroll.passive="update">
         <article v-for="p in visible" :key="p.name" class="card">
           <div class="img">
-            <img :src="p.image" :alt="p.name" loading="lazy" />
+            <img :src="p.cardImage || p.image" :alt="p.name" loading="lazy" />
             <span class="status">{{ p.status }}</span>
           </div>
           <div class="body">
@@ -70,12 +74,12 @@ onBeforeUnmount(() => window.removeEventListener('resize', update))
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z" /><circle cx="12" cy="10" r="2.5" /></svg>
               {{ p.location }}
             </p>
-            <p class="desc">{{ p.text }}</p>
+            <p class="desc">{{ p.shortSummary }}</p>
             <div class="foot">
               <div class="price"><small>Starts from</small><strong>{{ p.price }}</strong></div>
-              <a href="#consultation" class="explore">Explore
+              <NuxtLink :to="{ name: 'projects-slug', params: { slug: p.slug } }" class="explore">Explore
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6" /></svg>
-              </a>
+              </NuxtLink>
             </div>
           </div>
         </article>

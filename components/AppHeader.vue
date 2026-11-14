@@ -32,7 +32,7 @@ const close = () => { open.value = false }
       <BrandLogo dark @click="close" />
 
       <nav class="nav" aria-label="Main">
-        <a v-for="l in navLinks" :key="l.href" :href="l.href" @click="close">{{ l.label }}</a>
+        <NuxtLink v-for="l in navLinks" :key="l.href" :to="l.href" @click="close">{{ l.label }}</NuxtLink>
         <a :href="`tel:${contact.phoneHref}`" class="call" @click="close">Call Now</a>
       </nav>
 

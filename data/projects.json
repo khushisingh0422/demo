@@ -1,0 +1,419 @@
+[
+    {
+        "slug": "vd-residency",
+        "name": "VD Residency",
+        "tagline": "Near Noida International Airport",
+        "status": "Ongoing",
+        "type": "Residential Plots",
+        "city": "Noida",
+        "location": "Near Noida International Airport (Jewar), Noida",
+        "price": "Price on request",
+        "image": "https://static.wixstatic.com/media/bdad78_4ea7ec97a2af402489d5c1a83f351255~mv2.jpg",
+        "cardImage": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=85",
+        "shortSummary": "A township near the upcoming international airport, with easy access to the Yamuna Expressway.",
+        "overview": [
+            "Located in the fast-growing city of Noida, VD Residency combines the convenience of city living with the calm of a suburban community. Major highways are within easy reach.",
+            "The township offers a range of residential options, each thoughtfully designed with modern finishes and quality materials.",
+            "Community amenities such as a clubhouse, swimming pool, fitness center and playgrounds give residents plenty of room to relax and meet."
+        ],
+        "facts": [
+            {
+                "label": "Type",
+                "value": "Residential Plots"
+            },
+            {
+                "label": "Location",
+                "value": "Near Jewar Airport"
+            },
+            {
+                "label": "Status",
+                "value": "Ongoing"
+            },
+            {
+                "label": "Developer",
+                "value": "VD Vanchers"
+            }
+        ],
+        "highlights": [
+            {
+                "name": "Jewar Airport",
+                "minutes": 10
+            },
+            {
+                "name": "Yamuna Expressway",
+                "minutes": 5
+            },
+            {
+                "name": "F1 Racing Track",
+                "minutes": 15
+            },
+            {
+                "name": "Noida Film City",
+                "minutes": 15
+            }
+        ],
+        "amenities": [
+            "Club House",
+            "Swimming Pool",
+            "Fitness Center",
+            "Playgrounds"
+        ],
+        "video": {
+            "src": "",
+            "poster": "https://static.wixstatic.com/media/94a185_bf489407c84f4c168e013e1c0ba61139f000.jpg",
+            "title": "VD Residency project film"
+        },
+        "gallery": [
+            {
+                "src": "https://static.wixstatic.com/media/bdad78_4ea7ec97a2af402489d5c1a83f351255~mv2.jpg",
+                "caption": "Project banner"
+            },
+            {
+                "src": "https://static.wixstatic.com/media/94a185_bf489407c84f4c168e013e1c0ba61139f000.jpg",
+                "caption": "Site view"
+            }
+        ],
+        "documents": [
+            {
+                "label": "Site layout",
+                "url": "https://www.vanchers.com/_files/ugd/bdad78_4826bca45c484ec8b20ea234a3ca4ed1.pdf"
+            },
+            {
+                "label": "Price model",
+                "url": "https://www.vanchers.com/_files/ugd/bdad78_ff2653944e05452cbb2a7fc127197cd3.pdf"
+            }
+        ],
+        "mapImage": "https://static.wixstatic.com/media/a3c153_7de4e8c9cde646e9948c3fe36a44dfe3~mv2.jpg"
+    },
+    {
+        "slug": "the-royal-farmhouse",
+        "name": "The Royal Farmhouse",
+        "tagline": "Chhata, Vrindavan",
+        "status": "Ongoing",
+        "type": "Farmhouse Community",
+        "city": "Vrindavan",
+        "location": "Chhata, Mathura, Vrindavan",
+        "price": "Price on request",
+        "image": "https://static.wixstatic.com/media/bdad78_79d966e70d0048db937a6bb3868cdf10~mv2.jpg",
+        "cardImage": "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1400&q=85",
+        "shortSummary": "A farmhouse community near Vrindavan with a clubhouse, pool, cricket ground, horse riding and a proposed helipad.",
+        "overview": [
+            "Located in the fast-developing city of Vrindavan, The Royal Farmhouse offers the convenience of the city with the serenity of a suburban community. Highway access is excellent.",
+            "Each home is thoughtfully designed and crafted with modern finishes and quality materials.",
+            "Beyond the homes, the community offers clubhouse, swimming pool, fitness, play and sports facilities for recreation and socialising."
+        ],
+        "facts": [
+            {
+                "label": "Type",
+                "value": "Farmhouse Community"
+            },
+            {
+                "label": "Location",
+                "value": "Chhata, Vrindavan"
+            },
+            {
+                "label": "Status",
+                "value": "Ongoing"
+            },
+            {
+                "label": "Developer",
+                "value": "VD Vanchers"
+            }
+        ],
+        "highlights": [
+            {
+                "name": "Sanskriti University",
+                "minutes": 10
+            },
+            {
+                "name": "KD Medical College",
+                "minutes": 12
+            },
+            {
+                "name": "Prem Mandir",
+                "minutes": 30
+            },
+            {
+                "name": "Banke Bihari Mandir",
+                "minutes": 40
+            },
+            {
+                "name": "Yamuna Expressway",
+                "minutes": 15
+            },
+            {
+                "name": "Jewar International Airport",
+                "minutes": 40
+            }
+        ],
+        "amenities": [
+            "Club House",
+            "Swimming Pool",
+            "Cricket Ground",
+            "Gym",
+            "Kids Play Area",
+            "Helipad (Proposed)",
+            "Stud Farming",
+            "Horse Riding",
+            "Restaurant",
+            "Golf Chip & Putt"
+        ],
+        "video": {
+            "src": "",
+            "poster": "https://static.wixstatic.com/media/bdad78_6de1412d31ce400e9dd476900499c1dcf000.jpg",
+            "title": "The Royal Farmhouse project film"
+        },
+        "gallery": [
+            {
+                "src": "https://static.wixstatic.com/media/bdad78_79d966e70d0048db937a6bb3868cdf10~mv2.jpg",
+                "caption": "Project view"
+            },
+            {
+                "src": "https://static.wixstatic.com/media/bdad78_faa8c295730d4926b5005d6ee06fb8d8~mv2.jpg",
+                "caption": "Club house"
+            },
+            {
+                "src": "https://static.wixstatic.com/media/bdad78_de24d81d441348f7b0ac0f1022e8d1c3~mv2.jpg",
+                "caption": "Gym"
+            },
+            {
+                "src": "https://static.wixstatic.com/media/bdad78_3a676a15279e48cdb676caffe5fb9fd4~mv2.jpg",
+                "caption": "Helipad (proposed)"
+            },
+            {
+                "src": "https://static.wixstatic.com/media/bdad78_45acaa0bdd02402eb802449795e03986~mv2.jpg",
+                "caption": "Amenities"
+            },
+            {
+                "src": "https://static.wixstatic.com/media/bdad78_e5e739d52f2d4a6eb284ed16d0c93145~mv2.jpg",
+                "caption": "Site view"
+            }
+        ],
+        "documents": [
+            {
+                "label": "Site layout",
+                "url": "https://www.vanchers.com/_files/ugd/bdad78_b7609682b33f47929b6203a1a7a3b2ad.pdf"
+            },
+            {
+                "label": "Price model",
+                "url": "https://www.vanchers.com/_files/ugd/bdad78_a6a2f191e398440cb6432bb29a554f4f.pdf"
+            }
+        ],
+        "mapImage": "https://static.wixstatic.com/media/a3c153_7de4e8c9cde646e9948c3fe36a44dfe3~mv2.jpg"
+    },
+    {
+        "slug": "haripriya-enclave-vrindavan",
+        "name": "Haripriya Enclave",
+        "tagline": "Vrindavan",
+        "status": "Delivered",
+        "type": "Residential Plots",
+        "city": "Vrindavan",
+        "location": "Vrindavan",
+        "price": "Price on request",
+        "image": "https://static.wixstatic.com/media/bdad78_912cbc48f01f4fb9b493fd9b3d3e17e5~mv2.jpg",
+        "cardImage": "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=1400&q=85",
+        "shortSummary": "A delivered residential project in Vrindavan.",
+        "overview": [
+            "Haripriya Enclave in Vrindavan has been delivered by VD Vanchers.",
+            "The project offers the convenience of city living with the calm of a suburban community, with each home designed with modern finishes and quality materials."
+        ],
+        "facts": [
+            {
+                "label": "Type",
+                "value": "Residential Plots"
+            },
+            {
+                "label": "Location",
+                "value": "Vrindavan"
+            },
+            {
+                "label": "Status",
+                "value": "Delivered"
+            },
+            {
+                "label": "Developer",
+                "value": "VD Vanchers"
+            }
+        ],
+        "highlights": [],
+        "amenities": [],
+        "video": {
+            "src": "",
+            "poster": "https://static.wixstatic.com/media/bdad78_a8089197c25b45378ff8c6a284d1bd8df000.jpg",
+            "title": "Haripriya Enclave project film"
+        },
+        "gallery": [
+            {
+                "src": "https://static.wixstatic.com/media/bdad78_912cbc48f01f4fb9b493fd9b3d3e17e5~mv2.jpg",
+                "caption": "Project view"
+            },
+            {
+                "src": "https://static.wixstatic.com/media/bdad78_a8089197c25b45378ff8c6a284d1bd8df000.jpg",
+                "caption": "Site view"
+            }
+        ],
+        "documents": [
+            {
+                "label": "Price model",
+                "url": "https://www.vanchers.com/_files/ugd/bdad78_6f4e03c0ffec4ff1a5d263041abcc117.pdf"
+            }
+        ],
+        "mapImage": "https://static.wixstatic.com/media/a3c153_7de4e8c9cde646e9948c3fe36a44dfe3~mv2.jpg"
+    },
+    {
+        "slug": "the-highway-farms",
+        "name": "The Highway Farms",
+        "tagline": "Yamuna Expressway corridor",
+        "status": "Ongoing",
+        "type": "Farmhouse Community",
+        "city": "Yamuna Expressway",
+        "location": "Yamuna Expressway, Noida",
+        "price": "Price on request",
+        "image": "https://static.wixstatic.com/media/bdad78_85543e29d7e7492eb486aa0272621d87~mv2.jpg",
+        "cardImage": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1400&q=85",
+        "shortSummary": "Farmhouses minutes from Galgotias University, Sports City and the Yamuna Expressway.",
+        "overview": [
+            "Located in the growing Noida region, The Highway Farms combines city convenience with the calm of a suburban community, with easy access to major highways.",
+            "Each home is thoughtfully designed with modern finishes and quality materials.",
+            "Sports City, the international cricket stadium and the Buddha Circuit are all about five minutes away."
+        ],
+        "facts": [
+            {
+                "label": "Type",
+                "value": "Farmhouse Community"
+            },
+            {
+                "label": "Location",
+                "value": "Yamuna Expressway"
+            },
+            {
+                "label": "Status",
+                "value": "Ongoing"
+            },
+            {
+                "label": "Developer",
+                "value": "VD Vanchers"
+            }
+        ],
+        "highlights": [
+            {
+                "name": "Galgotias University",
+                "minutes": 5
+            },
+            {
+                "name": "Sports City",
+                "minutes": 5
+            },
+            {
+                "name": "International Cricket Stadium",
+                "minutes": 5
+            },
+            {
+                "name": "International Buddha Circuit",
+                "minutes": 5
+            },
+            {
+                "name": "Yamuna Expressway",
+                "minutes": 5
+            },
+            {
+                "name": "Noida International Airport",
+                "minutes": 15
+            },
+            {
+                "name": "IT Hub",
+                "minutes": 7
+            },
+            {
+                "name": "Film City",
+                "minutes": 10
+            }
+        ],
+        "amenities": [],
+        "video": {
+            "src": "",
+            "poster": "https://static.wixstatic.com/media/bdad78_9f4d35b742114e628b08411dc2485abff000.jpg",
+            "title": "The Highway Farms project film"
+        },
+        "gallery": [
+            {
+                "src": "https://static.wixstatic.com/media/bdad78_85543e29d7e7492eb486aa0272621d87~mv2.jpg",
+                "caption": "Project view"
+            },
+            {
+                "src": "https://static.wixstatic.com/media/bdad78_9f4d35b742114e628b08411dc2485abff000.jpg",
+                "caption": "Site view"
+            }
+        ],
+        "documents": [
+            {
+                "label": "Price model",
+                "url": "https://www.vanchers.com/_files/ugd/bdad78_4aa97aee1e984b8291b0f2d67c81d21c.pdf"
+            },
+            {
+                "label": "Brochure",
+                "url": "https://www.vanchers.com/_files/ugd/bdad78_afb0a5ce34464c8bb4bb43a64305051a.pdf"
+            }
+        ],
+        "mapImage": "https://static.wixstatic.com/media/a3c153_7de4e8c9cde646e9948c3fe36a44dfe3~mv2.jpg"
+    },
+    {
+        "slug": "nature-valley-dehradun",
+        "name": "Nature Valley",
+        "tagline": "Dehradun hills",
+        "status": "Delivered",
+        "type": "Hill Villas",
+        "city": "Dehradun",
+        "location": "Dehradun, Uttarakhand",
+        "price": "Price on request",
+        "image": "https://static.wixstatic.com/media/84770f_0018c709d8b74dfa93fd0cd11e139b8c~mv2_d_5760_3840_s_4_2.jpg",
+        "cardImage": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=85",
+        "shortSummary": "A delivered hill retreat with open views, privacy and fresh air, a short drive from the city.",
+        "overview": [
+            "A peaceful retreat from city life, set in the rolling hills with sweeping views.",
+            "The natural surroundings give a sense of privacy and exclusivity while keeping the city's conveniences a short drive away.",
+            "Step out onto your own deck or patio and breathe in the clean mountain air."
+        ],
+        "facts": [
+            {
+                "label": "Type",
+                "value": "Hill Villas"
+            },
+            {
+                "label": "Location",
+                "value": "Dehradun"
+            },
+            {
+                "label": "Status",
+                "value": "Delivered"
+            },
+            {
+                "label": "Developer",
+                "value": "VD Vanchers"
+            }
+        ],
+        "highlights": [],
+        "amenities": [],
+        "video": {
+            "src": "",
+            "poster": "https://static.wixstatic.com/media/11062b_a692cf446a3443dea4e4ce1df66ecd0ff000.jpg",
+            "title": "Nature Valley project film"
+        },
+        "gallery": [
+            {
+                "src": "https://static.wixstatic.com/media/84770f_0018c709d8b74dfa93fd0cd11e139b8c~mv2_d_5760_3840_s_4_2.jpg",
+                "caption": "Valley view"
+            },
+            {
+                "src": "https://static.wixstatic.com/media/11062b_3d468966dd034f70815d9a2233456f1a~mv2.jpeg",
+                "caption": "Villa"
+            },
+            {
+                "src": "https://static.wixstatic.com/media/11062b_a692cf446a3443dea4e4ce1df66ecd0ff000.jpg",
+                "caption": "Site view"
+            }
+        ],
+        "documents": [],
+        "mapImage": "https://static.wixstatic.com/media/a3c153_7de4e8c9cde646e9948c3fe36a44dfe3~mv2.jpg"
+    }
+]

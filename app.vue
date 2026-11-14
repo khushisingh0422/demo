@@ -1,16 +1,7 @@
 <template>
   <div>
     <AppHeader />
-    <main>
-      <HeroSlider />
-      <WhoWeAre />
-      <StatsCounter />
-      <ProjectsSection />
-      <DirectorsSection />
-      <TestimonialsSection />
-      <WhatWeOffer />
-      <ConsultationForm />
-    </main>
+    <NuxtPage />
     <AppFooter />
   </div>
 </template>

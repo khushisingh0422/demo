@@ -4,10 +4,10 @@ defineProps<{ dark?: boolean }>()
 </script>
 
 <template>
-  <a class="brand" :class="{ dark }" href="#home" :aria-label="`${brand.name} home`">
+  <NuxtLink class="brand" :class="{ dark }" to="/" :aria-label="`${brand.name} home`">
     <img class="crest" :src="brand.logo" :alt="`${brand.name} logo`" width="440" height="440" />
     <span class="name">{{ brand.name }}<small>{{ brand.tagline }}</small></span>
-  </a>
+  </NuxtLink>
 </template>
 
 <style scoped>
